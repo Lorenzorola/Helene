@@ -3,76 +3,177 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Helene Website</title>
-	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-		body {
-			font-family: 'Lexend', sans-serif;
-			background: #EBEDFF;
-			color: #333;
-		}
-
-		header {
-			background: #ADA7DA;
-			padding: 40px 20px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-		}
-
-		.logo {
-			width: 165px;
-			height: 105px;
-			background: #EBEDFF;
-			border-radius: 8px;
-		}
-
-		nav {
-			display: flex;
-			gap: 40px;
-			list-style: none;
-		}
-
-		nav a {
-			color: #EBEDFF;
-			text-decoration: none;
-			font-size: 25px;
-			font-weight: 600;
-			transition: opacity 0.3s ease;
-		}
-
-		nav a:hover {
-			opacity: 0.8;
-		}
-
-		main {
-			padding: 60px 20px;
-			max-width: 1200px;
-			margin: 0 auto;
-		}
-	</style>
+	<title>FocusBook</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<header>
-		<div class="logo"></div>
-		<nav>
-			<a href="#home">Home</a>
-			<a href="#products">Products</a>
-			<a href="#store">Store</a>
-			<a href="#support">Support</a>
-			<a href="#contacts">Contacts</a>
-		</nav>
+		<canvas id="headerSpace"></canvas>
+		<img
+			src="https://storage.googleapis.com/tagjs-prod.appspot.com/v1/F37VZzDljD/wxajdiao_expires_30_days.png"
+			alt="FocusBook Logo"
+			class="logo"
+		/>
+		<div class="nav-container">
+			<button class="menu-toggle" id="menuToggle">☰</button>
+			<nav id="menu">
+				<a href="#home">Home</a>
+				<a href="#products">Products</a>
+				<a href="#store">Store</a>
+				<a href="#support">Support</a>
+				<a href="#contacts">Contacts</a>
+			</nav>
+		</div>
 	</header>
 
 	<main>
-		<!-- Main content goes here -->
+		<h1 class="hero-title">FocusBook</h1>
+		<h2 class="hero-subtitle">Be Hélene, Be Smart.</h2>
 	</main>
+
+	<script>
+		const menuToggle = document.getElementById('menuToggle');
+		const menu = document.getElementById('menu');
+
+		menuToggle.addEventListener('click', () => {
+			menu.classList.toggle('active');
+		});
+
+		// Chiudi il menu quando clicchi su un link
+		const navLinks = menu.querySelectorAll('a');
+		navLinks.forEach(link => {
+			link.addEventListener('click', () => {
+				menu.classList.remove('active');
+			});
+		});
+
+		// Chiudi il menu quando clicchi fuori
+		document.addEventListener('click', (e) => {
+			if (!e.target.closest('header')) {
+				menu.classList.remove('active');
+			}
+		});
+
+		const headerCanvas = document.getElementById('headerSpace');
+		const headerCtx = headerCanvas.getContext('2d');
+
+		function resizeHeaderCanvas() {
+			headerCanvas.width = headerCanvas.offsetWidth;
+			headerCanvas.height = headerCanvas.offsetHeight;
+		}
+
+		const stars = [];
+
+		function createStars() {
+			stars.length = 0;
+			const count = Math.max(150, Math.floor(headerCanvas.width / 6));
+			for (let i = 0; i < count; i++) {
+				const isLargeStar = Math.random() < 0.15; // 15% stelle grandi a forma di stella
+				const size = isLargeStar ? Math.random() * 2 + 1.5 : Math.random() * 0.8 + 0.2;
+				
+				stars.push({
+					x: Math.random() * headerCanvas.width,
+					y: Math.random() * headerCanvas.height,
+					size: size,
+					isLargeStar: isLargeStar,
+					brightness: Math.random() * 0.5 + 0.5,
+					twinkleSpeed: Math.random() * 0.08 + 0.02,
+					twinklePhase: Math.random() * Math.PI * 2
+				});
+			}
+		}
+
+		// Disegna una stella a 4 punte
+		function drawFourPointStar(ctx, x, y, size) {
+			const points = 4;
+			const outerRadius = size;
+			const innerRadius = size * 0.4;
+
+			ctx.beginPath();
+			for (let i = 0; i < points * 2; i++) {
+				const radius = i % 2 === 0 ? outerRadius : innerRadius;
+				const angle = (i * Math.PI) / points - Math.PI / 2;
+				const px = x + Math.cos(angle) * radius;
+				const py = y + Math.sin(angle) * radius;
+
+				if (i === 0) {
+					ctx.moveTo(px, py);
+				} else {
+					ctx.lineTo(px, py);
+				}
+			}
+			ctx.closePath();
+		}
+
+		function animateHeaderStars() {
+			headerCtx.clearRect(0, 0, headerCanvas.width, headerCanvas.height);
+
+			stars.forEach((star) => {
+				// Effetto di accensione/spegnimento
+				star.twinklePhase += star.twinkleSpeed;
+				const twinkle = Math.sin(star.twinklePhase);
+				// Mappa il seno tra 0.1 e 1 per effetto più evidente
+				const opacity = 0.1 + (twinkle + 1) * 0.45;
+
+				if (star.isLargeStar) {
+					// Disegna stella grande a 4 punte con gradiente
+					const grad = headerCtx.createRadialGradient(
+						star.x, star.y, 0,
+						star.x, star.y, star.size * 3
+					);
+					grad.addColorStop(0, `rgba(255, 255, 255, ${opacity})`);
+					grad.addColorStop(0.3, `rgba(200, 220, 255, ${opacity * 0.8})`);
+					grad.addColorStop(1, `rgba(150, 180, 255, ${opacity * 0.2})`);
+
+					headerCtx.fillStyle = grad;
+					headerCtx.shadowColor = `rgba(180, 210, 255, ${opacity * 0.8})`;
+					headerCtx.shadowBlur = star.size * 5;
+
+					drawFourPointStar(headerCtx, star.x, star.y, star.size);
+					headerCtx.fill();
+
+					// Centro luminoso della stella
+					headerCtx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+					headerCtx.beginPath();
+					headerCtx.arc(star.x, star.y, star.size * 0.2, 0, Math.PI * 2);
+					headerCtx.fill();
+				} else {
+					// Piccole stelle - cerchi con glow
+					const grad = headerCtx.createRadialGradient(
+						star.x, star.y, 0,
+						star.x, star.y, star.size * 3
+					);
+					grad.addColorStop(0, `rgba(255, 255, 255, ${opacity})`);
+					grad.addColorStop(0.4, `rgba(220, 240, 255, ${opacity * 0.6})`);
+					grad.addColorStop(1, `rgba(100, 180, 255, ${opacity * 0.2})`);
+
+					headerCtx.fillStyle = grad;
+					headerCtx.shadowColor = `rgba(150, 200, 255, ${opacity * 0.8})`;
+					headerCtx.shadowBlur = star.size * 4;
+
+					headerCtx.beginPath();
+					headerCtx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+					headerCtx.fill();
+				}
+
+				headerCtx.shadowBlur = 0;
+			});
+
+			requestAnimationFrame(animateHeaderStars);
+		}
+
+		function initHeaderAnimation() {
+			resizeHeaderCanvas();
+			createStars();
+			animateHeaderStars();
+		}
+
+		window.addEventListener('resize', () => {
+			resizeHeaderCanvas();
+			createStars();
+		});
+
+		initHeaderAnimation();
+	</script>
 </body>
 </html>
