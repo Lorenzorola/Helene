@@ -21,6 +21,9 @@
 	--color-nav-hover: rgba(0, 0, 0, 0.1);
 	--color-header-bg-start: #0b0c2a;
 	--color-header-bg-end: #000000;
+	--color-title-space-start: #ffffff;
+	--color-title-space-mid: #cfd7ff;
+	--color-title-space-end: #7f8cff;
 }
 
 * {
@@ -36,7 +39,12 @@ body {
 }
 
 header {
-	background: radial-gradient(ellipse at bottom, var(--color-header-bg-start) 0%, var(--color-header-bg-end) 100%);
+	background:
+		radial-gradient(circle at 18% 28%, rgba(38, 48, 110, 0.2) 0%, transparent 26%),
+		radial-gradient(circle at 78% 18%, rgba(92, 40, 104, 0.14) 0%, transparent 22%),
+		radial-gradient(circle at 52% 100%, rgba(18, 30, 86, 0.28) 0%, transparent 44%),
+		radial-gradient(circle at 34% 68%, rgba(90, 35, 72, 0.08) 0%, transparent 24%),
+		linear-gradient(180deg, #02030a 0%, #050716 46%, #000000 100%);
 	padding: 1.5rem 3rem;
 	display: flex;
 	flex-direction: row;
@@ -51,14 +59,23 @@ header::before {
 	content: '';
 	position: absolute;
 	inset: 0;
-	background: radial-gradient(ellipse at bottom, rgba(255,255,255,0.06) 0%, transparent 60%);
+	background:
+		radial-gradient(circle at 12% 35%, rgba(255,255,255,0.24) 0 1px, transparent 2px),
+		radial-gradient(circle at 38% 18%, rgba(210,216,255,0.18) 0 1px, transparent 2px),
+		radial-gradient(circle at 72% 42%, rgba(255,235,248,0.16) 0 1px, transparent 2px),
+		radial-gradient(circle at 88% 24%, rgba(235,237,255,0.24) 0 1px, transparent 2px),
+		radial-gradient(circle at 58% 72%, rgba(255,255,255,0.2) 0 1.5px, transparent 3px),
+		radial-gradient(circle at 26% 82%, rgba(206,213,255,0.16) 0 1.5px, transparent 3px),
+		radial-gradient(ellipse at bottom, rgba(255,255,255,0.06) 0%, transparent 64%);
+	background-size: 180px 110px, 220px 140px, 260px 150px, 190px 130px, 310px 180px, 280px 170px, 100% 100%;
+	opacity: 0.9;
 	pointer-events: none;
 }
 
 header > .logo,
 header > .nav-container {
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 }
 
 header canvas {
@@ -69,6 +86,9 @@ header canvas {
 	height: 100%;
 	z-index: 0;
 	pointer-events: none;
+	filter: brightness(1.9) contrast(1.35) drop-shadow(0 0 4px rgba(235, 237, 255, 0.85));
+	transform: scale(1.08);
+	animation: starGlow 0.22s ease-in-out infinite alternate;
 }
 
 .logo {
@@ -133,7 +153,7 @@ main {
 }
 
 .hero-subtitle {
-	color: var(--color-header;
+	color: var(--color-header);
 	font-size: 20px;
 	font-weight: 400;
 	font-family: 'LemonMilk', system-ui, sans-serif;
@@ -149,7 +169,6 @@ main {
 	object-fit: contain;
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
 	header {
 		padding: 1.5rem 2rem;
@@ -169,7 +188,6 @@ main {
 	}
 }
 
-/* Mobile */
 @media (max-width: 768px) {
 	header {
 		padding: 1rem 1.5rem;
@@ -235,5 +253,20 @@ main {
 
 	main {
 		padding: 1.5rem;
+	}
+}
+
+@keyframes starGlow {
+	0% {
+		filter: brightness(1.55) contrast(1.2) drop-shadow(0 0 2px rgba(235, 237, 255, 0.65));
+		opacity: 0.82;
+	}
+	45% {
+		filter: brightness(2.2) contrast(1.45) drop-shadow(0 0 6px rgba(235, 237, 255, 0.95));
+		opacity: 1;
+	}
+	100% {
+		filter: brightness(1.8) contrast(1.35) drop-shadow(0 0 4px rgba(180, 190, 255, 0.85));
+		opacity: 0.9;
 	}
 }
