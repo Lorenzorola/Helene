@@ -270,3 +270,60 @@ main {
 		opacity: 0.9;
 	}
 }
+
+@keyframes navShootingStarAnim {
+	0% {
+		transform: translateX(0) scaleX(0);
+		opacity: 0;
+	}
+	20% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(30px) scaleX(1);
+		opacity: 0;
+	}
+}
+
+@keyframes shootingStarLine {
+	0% {
+		transform: scaleX(0);
+		opacity: 0;
+	}
+	100% {
+		transform: scaleX(1);
+		opacity: 1;
+	}
+}
+
+@keyframes shootingStarGlow {
+	0% {
+		box-shadow: 0 0 3px rgba(255,255,255,0.5);
+	}
+	100% {
+		box-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 15px rgba(200,220,255,0.5);
+	}
+}
+
+@keyframes starPulse {
+	0% {
+		opacity: 0.6;
+		transform: scale(0.9);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+}
+
+@keyframes starMove {
+	0% {
+		right: 100%;
+	}
+	50% {
+		right: -5px;
+	}
+	100% {
+		right: 100%;
+	}
+}
