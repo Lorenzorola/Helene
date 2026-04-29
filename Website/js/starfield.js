@@ -7,6 +7,7 @@ class Starfield {
 		this.ctx = canvas.getContext('2d');
 		this.stars = [];
 		this.shootingStars = [];
+		this.lastTimestamp = 0;
 		this.lastShootingStarTime = 0;
 		this.shootingStarInterval = 4000;
 		this.animationId = null;
@@ -28,7 +29,7 @@ class Starfield {
 		const count = Math.max(150, Math.floor(this.canvas.width / 6));
 		for (let i = 0; i < count; i++) {
 			const isLargeStar = Math.random() < 0.15;
-			const size = isLargeStar ? Math.random() * 2 + 1.5 : Math.random() * 0.8 + 0.2;
+			const size = isLargeStar ? Math.random() * 2.4 + 1.8 : Math.random() * 0.8 + 0.2;
 			
 			this.stars.push({
 				x: Math.random() * this.canvas.width,
@@ -36,7 +37,7 @@ class Starfield {
 				size: size,
 				isLargeStar: isLargeStar,
 				brightness: Math.random() * 0.5 + 0.5,
-				twinkleSpeed: Math.random() * 0.04 + 0.02,
+				twinkleSpeed: Math.random() * 0.002 + 0.004,
 				twinklePhase: Math.random() * Math.PI * 2
 			});
 		}
@@ -85,21 +86,22 @@ class Starfield {
 		const deltaY = targetY - startY;
 		const distance = Math.hypot(deltaX, deltaY);
 
-		// Dimensioni casuali per la shooting star
-		const sizeMultiplier = Math.random() * 0.8 + 0.4;
+		const speed = Math.random() * 200 + 240;
+		const travelTime = distance / speed * 1000;
+		const size = Math.random() * 1.5 + 1;
 
 		this.shootingStars.push({
 			x: startX,
 			y: startY,
-			length: Math.random() * 100 + 150,
-			speed: Math.random() * 3 + 5,
+			length: Math.random() * 120 + 140,
+			speed: speed,
 			directionX: deltaX / distance,
 			directionY: deltaY / distance,
 			opacity: 1,
 			life: 0,
-			maxLife: 200,
-			size: 2 * sizeMultiplier,
-			tailSize: 2 * sizeMultiplier
+			maxLife: travelTime + 350,
+			size: size,
+			tailSize: size * 2.2
 		});
 	}
 
@@ -124,9 +126,9 @@ class Starfield {
 		ctx.closePath();
 	}
 
-	drawStars() {
+	drawStars(dt) {
 		this.stars.forEach((star) => {
-			star.twinklePhase += star.twinkleSpeed;
+			star.twinklePhase += star.twinkleSpeed * dt;
 			const twinkle = Math.sin(star.twinklePhase);
 			const opacity = 0.1 + (twinkle + 1) * 0.45;
 
@@ -166,12 +168,12 @@ class Starfield {
 		});
 	}
 
-	drawShootingStars() {
+	drawShootingStars(dt) {
 		for (let i = this.shootingStars.length - 1; i >= 0; i--) {
 			const s = this.shootingStars[i];
-			s.life++;
-			s.x += s.directionX * s.speed;
-			s.y += s.directionY * s.speed;
+			s.life += dt;
+			s.x += s.directionX * s.speed * dt * 0.001;
+			s.y += s.directionY * s.speed * dt * 0.001;
 			s.opacity = Math.max(0, 1 - s.life / s.maxLife);
 
 			const tailX = s.x - s.directionX * s.length;
@@ -186,8 +188,10 @@ class Starfield {
 			this.ctx.save();
 			this.ctx.strokeStyle = gradient;
 			this.ctx.lineWidth = s.tailSize || 4;
+			this.ctx.lineCap = 'round';
+			this.ctx.lineJoin = 'round';
 			this.ctx.shadowColor = `rgba(220,230,255,${s.opacity})`;
-			this.ctx.shadowBlur = 14;
+			this.ctx.shadowBlur = Math.max(10, s.size * 6);
 			this.ctx.beginPath();
 			this.ctx.moveTo(tailX, tailY);
 			this.ctx.lineTo(s.x, s.y);
@@ -220,9 +224,16 @@ class Starfield {
 	}
 
 	animate(timestamp = 0) {
+		if (!this.lastTimestamp) {
+			this.lastTimestamp = timestamp;
+		}
+
+		const dt = Math.min(timestamp - this.lastTimestamp, 50);
+		this.lastTimestamp = timestamp;
+
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-		this.drawStars();
+		this.drawStars(dt);
 
 		if (timestamp - this.lastShootingStarTime >= this.shootingStarInterval) {
 			this.createShootingStar();
@@ -234,7 +245,7 @@ class Starfield {
 			}
 		}
 
-		this.drawShootingStars();
+		this.drawShootingStars(dt);
 
 		this.animationId = requestAnimationFrame((t) => this.animate(t));
 	}
