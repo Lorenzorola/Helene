@@ -1,16 +1,4 @@
-@font-face {
-	font-family: 'LemonMilk';
-	font-style: normal;
-	font-weight: 400;
-	src: url('font/LemonMilkRegular.otf') format('opentype');
-}
 
-@font-face {
-	font-family: 'LemonMilk';
-	font-style: normal;
-	font-weight: 700;
-	src: url('font/LemonMilkBold.otf') format('opentype');
-}
 
 :root {
 	--color-bg: #ffffff;
@@ -19,11 +7,7 @@
 	--color-border: #000000;
 	--color-nav-divider: rgba(235, 237, 255, 0.2);
 	--color-nav-hover: rgba(0, 0, 0, 0.1);
-	--color-header-bg-start: #0b0c2a;
-	--color-header-bg-end: #000000;
-	--color-title-space-start: #ffffff;
-	--color-title-space-mid: #cfd7ff;
-	--color-title-space-end: #7f8cff;
+	--color-highlight: #F11948;
 }
 
 * {
@@ -33,18 +17,13 @@
 }
 
 body {
-	font-family: 'LemonMilk', system-ui, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 	font-weight: 400;
 	background-color: var(--color-bg);
 }
 
 header {
-	background:
-		radial-gradient(circle at 18% 28%, rgba(38, 48, 110, 0.2) 0%, transparent 26%),
-		radial-gradient(circle at 78% 18%, rgba(92, 40, 104, 0.14) 0%, transparent 22%),
-		radial-gradient(circle at 52% 100%, rgba(18, 30, 86, 0.28) 0%, transparent 44%),
-		radial-gradient(circle at 34% 68%, rgba(90, 35, 72, 0.08) 0%, transparent 24%),
-		linear-gradient(180deg, #02030a 0%, #050716 46%, #000000 100%);
+	background: #000000;
 	padding: 1.5rem 3rem;
 	display: flex;
 	flex-direction: row;
@@ -59,16 +38,7 @@ header::before {
 	content: '';
 	position: absolute;
 	inset: 0;
-	background:
-		radial-gradient(circle at 12% 35%, rgba(255,255,255,0.24) 0 1px, transparent 2px),
-		radial-gradient(circle at 38% 18%, rgba(210,216,255,0.18) 0 1px, transparent 2px),
-		radial-gradient(circle at 72% 42%, rgba(255,235,248,0.16) 0 1px, transparent 2px),
-		radial-gradient(circle at 88% 24%, rgba(235,237,255,0.24) 0 1px, transparent 2px),
-		radial-gradient(circle at 58% 72%, rgba(255,255,255,0.2) 0 1.5px, transparent 3px),
-		radial-gradient(circle at 26% 82%, rgba(206,213,255,0.16) 0 1.5px, transparent 3px),
-		radial-gradient(ellipse at bottom, rgba(255,255,255,0.06) 0%, transparent 64%);
-	background-size: 180px 110px, 220px 140px, 260px 150px, 190px 130px, 310px 180px, 280px 170px, 100% 100%;
-	opacity: 0.9;
+	display: none;
 	pointer-events: none;
 }
 
@@ -86,7 +56,7 @@ header canvas {
 	height: 100%;
 	z-index: 0;
 	pointer-events: none;
-	filter: brightness(1.9) contrast(1.35) drop-shadow(0 0 4px rgba(235, 237, 255, 0.85));
+	filter: brightness(0.8) contrast(1.2) drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
 	transform: scale(1.08);
 	animation: starGlow 0.22s ease-in-out infinite alternate;
 }
@@ -106,14 +76,14 @@ header canvas {
 
 nav {
 	display: flex;
-	gap: 2rem;
+	gap: 3rem;
 }
 
 nav a {
 	color: var(--color-text);
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: 400;
-	font-family: 'LemonMilk', system-ui, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 	text-decoration: none;
 	transition: opacity 0.3s ease;
 	white-space: nowrap;
@@ -132,31 +102,67 @@ nav a:hover {
 	cursor: pointer;
 	padding: 0.5rem;
 	line-height: 1;
-	font-family: 'LemonMilk', system-ui, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 }
 
 main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 3rem;
+	padding-top: 3rem;
+	padding-bottom: 0;
 	min-height: calc(100vh - 200px);
+	background: linear-gradient(180deg, #FFFFFF 37%, #DADADA 100%);
+}
+
+.hero-buttons {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+}
+
+.hero-btn-fill {
+	color: var(--color-text);
+	font-weight: 400;
+	text-decoration: none;
+	transition: color 0.3s ease;
+	background-color: var(--color-highlight);
+	border-radius: 100px;
+	padding: 0.75rem 2rem;
+	min-width: 140px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero-btn-empty {
+	color: var(--color-highlight);
+	font-weight: 400;
+	text-decoration: none;
+	transition: color 0.3s ease;
+	border: 2px solid var(--color-highlight);
+	border-radius: 100px;
+	padding: 0.75rem 2rem;
+	min-width: 140px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .hero-title {
 	color: var(--color-header);
 	font-size: 80px;
 	font-weight: 700;
-	font-family: 'LemonMilk', system-ui, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 	text-align: center;
-	margin-bottom: 0.25rem;
+	margin-bottom: 0;
 }
 
 .hero-subtitle {
 	color: var(--color-header);
 	font-size: 20px;
 	font-weight: 400;
-	font-family: 'LemonMilk', system-ui, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 	text-align: center;
 	letter-spacing: 0.04em;
 	margin-bottom: 2rem;
@@ -164,9 +170,8 @@ main {
 
 .hero-image {
 	width: 100%;
-	max-width: 800px;
 	height: auto;
-	object-fit: contain;
+	object-fit:fill;
 }
 
 @media (max-width: 1024px) {
@@ -185,6 +190,12 @@ main {
 
 	.hero-title {
 		font-size: 80px;
+	}
+
+	.hero-btn-fill,
+	.hero-btn-empty {
+		min-width: 130px;
+		padding: 0.7rem 1.8rem;
 	}
 }
 
@@ -249,6 +260,13 @@ main {
 	.hero-title {
 		font-size: 50px;
 		margin-bottom: 1rem;
+	}
+
+	.hero-btn-fill,
+	.hero-btn-empty {
+		min-width: 110px;
+		padding: 0.6rem 1.5rem;
+		font-size: 14px;
 	}
 
 	main {
