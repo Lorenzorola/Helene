@@ -10,6 +10,13 @@
 	--color-highlight: #F11948;
 }
 
+@font-face {
+	font-family: 'SF Pro';
+	src: url('assets/font/SF-Pro.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -17,19 +24,18 @@
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
+	font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 	font-weight: 400;
 	background-color: var(--color-bg);
 }
 
 header {
 	background: #000000;
-	padding: 1.5rem 3rem;
+	padding: 3rem 3rem;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-between;
-	gap: 1.5rem;
+	justify-content: center;
 	position: relative;
 	overflow: hidden;
 }
@@ -42,7 +48,18 @@ header::before {
 	pointer-events: none;
 }
 
-header > .logo,
+header > .logo {
+	position: absolute;
+	left: 3rem;
+	z-index: 2;
+}
+
+header > .cart-icon {
+	position: absolute;
+	right: 3rem;
+	z-index: 2;
+}
+
 header > .nav-container {
 	position: relative;
 	z-index: 2;
@@ -68,6 +85,32 @@ header canvas {
 	flex-shrink: 0;
 }
 
+.cart-icon{
+	position: relative;
+}
+
+.cart-icon img {
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+	flex-shrink: 0;
+	transition: transform 0.3s ease;
+}
+
+.cart-icon .hover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+.cart-icon:hover .hover {
+	opacity: 1;
+}
+
+.cart-icon:hover .base {
+	opacity: 0;
+}
+
 .nav-container {
 	display: flex;
 	align-items: center;
@@ -82,14 +125,15 @@ nav {
 nav a {
 	color: var(--color-text);
 	font-size: 16px;
-	font-weight: 400;
-	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
+	font-weight: 500;
+	font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 	text-decoration: none;
 	transition: opacity 0.3s ease;
 	white-space: nowrap;
 }
 
 nav a:hover {
+	color: var(--color-highlight);
 	opacity: 0.8;
 }
 
@@ -102,7 +146,7 @@ nav a:hover {
 	cursor: pointer;
 	padding: 0.5rem;
 	line-height: 1;
-	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
+	font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 }
 
 main {
@@ -113,6 +157,30 @@ main {
 	padding-bottom: 0;
 	min-height: calc(100vh - 200px);
 	background: linear-gradient(180deg, #FFFFFF 37%, #DADADA 100%);
+}
+
+black-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 3rem;
+	padding-bottom: 0;
+	background: #000000;
+}
+
+.black-title {
+	color: var(--color-text);
+	font-size: 50px;
+	font-weight: 600;
+	font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.highlight-accent {
+	color: var(--color-highlight);
+	font-weight: 600;
+	font-style: italic;
 }
 
 .hero-buttons {
@@ -151,9 +219,9 @@ main {
 
 .hero-title {
 	color: var(--color-header);
-	font-size: 80px;
+	font-size: 90px;
 	font-weight: 700;
-	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
+	font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 	text-align: center;
 	margin-bottom: 0;
 }
@@ -161,8 +229,8 @@ main {
 .hero-subtitle {
 	color: var(--color-header);
 	font-size: 20px;
-	font-weight: 400;
-	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
+	font-weight: 500;
+	font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif;
 	text-align: center;
 	letter-spacing: 0.04em;
 	margin-bottom: 2rem;
@@ -172,106 +240,6 @@ main {
 	width: 100%;
 	height: auto;
 	object-fit:fill;
-}
-
-@media (max-width: 1024px) {
-	header {
-		padding: 1.5rem 2rem;
-		gap: 1rem;
-	}
-
-	nav {
-		gap: 1.5rem;
-	}
-
-	nav a {
-		font-size: 20px;
-	}
-
-	.hero-title {
-		font-size: 80px;
-	}
-
-	.hero-btn-fill,
-	.hero-btn-empty {
-		min-width: 130px;
-		padding: 0.7rem 1.8rem;
-	}
-}
-
-@media (max-width: 768px) {
-	header {
-		padding: 1rem 1.5rem;
-	}
-
-	.logo {
-		width: 80px;
-		height: 50px;
-	}
-
-	.menu-toggle {
-		display: block;
-		background: none;
-		border: none;
-		color: var(--color-text);
-		font-size: 28px;
-		cursor: pointer;
-		padding: 0;
-		line-height: 1;
-	}
-
-	.nav-container {
-		gap: 0.5rem;
-	}
-
-	nav {
-		display: none;
-		position: absolute;
-		top: 100%;
-		right: 0;
-		flex-direction: column;
-		background-color: var(--color-header);
-		padding: 1rem;
-		gap: 0;
-		z-index: 1000;
-		border-left: 1px solid var(--color-border);
-	}
-
-	nav.active {
-		display: flex;
-	}
-
-	nav a {
-		display: block;
-		padding: 0.75rem 1.5rem;
-		font-size: 18px;
-		border-bottom: 1px solid var(--color-nav-divider);
-		white-space: nowrap;
-	}
-
-	nav a:last-child {
-		border-bottom: none;
-	}
-
-	nav a:hover {
-		background-color: var(--color-nav-hover);
-	}
-
-	.hero-title {
-		font-size: 50px;
-		margin-bottom: 1rem;
-	}
-
-	.hero-btn-fill,
-	.hero-btn-empty {
-		min-width: 110px;
-		padding: 0.6rem 1.5rem;
-		font-size: 14px;
-	}
-
-	main {
-		padding: 1.5rem;
-	}
 }
 
 @keyframes starGlow {
