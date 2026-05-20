@@ -321,51 +321,6 @@ black-section {
 	justify-content: center;
 }
 
-/* Footer */
-.site-footer {
-	background: #000000;
-	color: var(--color-text);
-	padding: 2.25rem 3rem;
-}
-
-.footer-inner {
-	max-width: 1200px;
-	margin: 0 auto;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 1rem;
-	flex-wrap: wrap;
-}
-
-.footer-logo {
-	width: 110px;
-	height: auto;
-	flex-shrink: 0;
-}
-
-.footer-nav {
-	display: flex;
-	gap: 1.25rem;
-}
-
-.footer-nav a {
-	color: var(--color-text);
-	text-decoration: none;
-	font-size: 15px;
-	opacity: 0.92;
-}
-
-.footer-nav a:hover {
-	color: var(--color-highlight);
-	opacity: 1;
-}
-
-.footer-copy {
-	font-size: 14px;
-	opacity: 0.75;
-}
-
 @media (max-width: 720px) {
 	.footer-inner {
 		flex-direction: column;
