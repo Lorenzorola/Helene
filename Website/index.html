@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>FocusBook</title>
 	<link rel="stylesheet" href="styles.css">
-	<script src="js/animations.js"></script>
 </head>
 <body>
 	<header>
-		<img
-			src="assets/Logo.svg"
-			alt="FocusBook Logo"
-			class="logo"
-		/>
+		<a href="#home" class="logo">
+			<img
+				src="assets/Logo.svg"
+				alt="FocusBook Logo"
+				class="logo"
+			/>
+		</a>
 		<div class="nav-container">
 			<button class="menu-toggle" id="menuToggle">☰</button>
 			<nav id="menu">
-				<a href="#home">Home</a>
-				<a href="#products">Prodotti</a>
-				<a href="#store">Store</a>
+				<a href="index.html" class="active">Home</a>
+				<a href="#products">FocusBook</a>
+				<div class="nav-dropdown">
+					<a href="accessori.html">Accessori</a>
+					<div class="dropdown-menu">
+						<a href="#reviews">Adriana Pen 2.0</a>
+						<a href="#support">StellarKeyboard</a>
+					</div>
+				</div>
 				<a href="#support">Supporto</a>
 				<a href="#contacts">Contatti</a>
 			</nav>
@@ -35,49 +42,51 @@
 		<h1 class="hero-title">FocusBook</h1>
 		<h2 class="hero-subtitle">La soluzione definitiva per l’Education</h2>
 		<div class="hero-buttons">
-			<a href="#products" class="btn-fill" style="min-width: 140px;">Scopri di più</a>
-			<a href="#store" class="btn-empty" style="min-width: 140px;">Acquista</a>
+			<a href="#products" class="btn-fill">Scopri di più</a>
+			<a href="#store" class="btn-empty">Acquista</a>
 		</div>
 		<img src="assets/FocusBook index VFX.png" alt="FocusBook Hero Image" class="hero-image" />
 	</main>
 	<black-section>
 		<h2 class="black-title">Scopri gli <span class="highlight-accent">accessori</span>...</h2>
 		<h3 class="black-subtitle">per rendere lo studio finalmente piacevole</h3>
-		<div class="Accessiori-container">
-			<div class="Accessiori-box">
+		<div class="Accessori-container">
+			<div class="Accessori-box">
 				<img src="assets/Apple Pencil 1.png" alt="Apple Pencil 1">
 				<p>Adriana Pen 2.0</p>
 				<a href="#store" class="btn-empty">Acquista</a>
 			</div>
-			<div class="Accessiori-box">
+			<div class="Accessori-box">
 				<img src="assets/Tastiera.png" alt="Tastiera">
 				<p>StellarKeyboard</p>
 				<a href="#store" class="btn-empty">Acquista</a>
 			</div>
 		</div>
-		<a href="#store" class="btn-fill" style="font-size: 20px;">Vai agli accessori</a>
+		<a href="#store" class="btn-fill btn-large">Vai agli accessori</a>
 	</black-section>
 	<white-section>
 		<h2 class="white-title">...e le nostre coloratissime <span class="highlight-accent">cover</span></h2>
 		<h3 class="white-subtitle">che rendono il tuo FocusBook personalizzato</h3>
 		<img src="assets/Covers.png" alt="FocusBook Cover Image" class="covers-image" />
-		<a href="#store" class="btn-fill" style="font-size: 20px;">Scopri tutti i colori</a>
+		<a href="#store" class="btn-fill btn-large">Scopri tutti i colori</a>
 	</white-section>
 	<red-section>
 		<a  href="#reviews" class="reviews-container">
-			<img src="assets/OS.png" alt="OS Image" style="height: 10rem; aspect-ratio: 1:1;"/>
+			<img src="assets/OS.png" alt="OS Image" class="os-image"/>
 			<div class="reviews-box">
 				<h2>Consulta le nostre recensioni</h2>
-				<img src="assets/Stelle.png" alt="Stelle" style="height: 5rem;"/>
+				<img src="assets/Stelle.png" alt="Stelle" class="stelle-image"/>
 			</div>
 		</a>
 	</red-section>
 	<footer> 
-		<img src="assets/Logo.svg" alt="FocusBook Logo" class="logo"/>
+		<a href="#home" class="logo">
+			<img src="assets/Logo.svg" alt="FocusBook Logo" class="logo"/>
+		</a>
 		<div class="footer-container">
 			<div class="footer-links">
 				<a href="#cookies">Cookies and Privacy</a>
-				<p>Via Giuseppe Berio, 69, 18100 Imperia IM</p>
+				<p>Via Cordona, 67, 18100 Imperia IM</p>
 				<p>©2026 Hélene. Tutti i diritti riservati.</p>
 			</div>
 		</div>
