@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FocusBook</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header>
+		<a href="#home" class="logo">
+			<img
+				src="assets/Logo.svg"
+				alt="FocusBook Logo"
+				class="logo"
+			/>
+		</a>
+	<div class="nav-container">
+			<button class="menu-toggle" id="menuToggle">☰</button>
+			<nav id="menu">
+				<a href="index.html">Home</a>
+				<a href="focusbook.html" class="active">FocusBook</a>
+				<div class="nav-dropdown">
+					<a href="accessori.html">Accessori</a>
+					<div class="dropdown-menu">
+						<a href="#reviews">Adriana Pen 2.0</a>
+						<a href="#support">StellarKeyboard</a>
+					</div>
+				</div>
+				<a href="#support">Supporto</a>
+				<a href="#contacts">Contatti</a>
+			</nav>
+		</div>
+		<div class="cart-icon">
+			<img src="assets/cart.png" alt="base cart" class="base">
+			<img src="assets/cart-hover.png" alt="hover cart" class="hover">
+		</div>
+	</header>
+    <focusbook-hero>
+        <div class="focusbook-hero-text">
+            <h2>Scopri</h2>
+            <h1>FocusBook</h1>
+            <p>Il tablet pensato per lo studio e <br>progettato per la concentrazione.</p>
+        </div>
+ 
+        <img src="assets/focusbook-hero1.png" alt="FocusBook Hero Image">
+
+        <div class="focusbook-hero-btn">
+            <a href="#store" class="btn-empty btn-large" style="min-width: 240px;">Acquista School</a>
+            <a href="#products" class="btn-fill btn-large" style="min-width: 240px;">Acquista Personal</a>
+        </div>
+    </focusbook-hero>
+    <black-section class="focusbook-nova-section">
+        <div class="focusbook-nova">
+            <div class="focusbook-nova-text">
+                <h3>Display Supernova</h3>
+                <h2>Colori realistici. <br> Neri profondi. <br> Fluidità.</h2>
+                <p>Il display Supernova OLED offre <br> un’esperienza immersiva e comfortevole, <br> anche durante le sessioni più lunghe</p>
+            </div>
+            <img src="assets/focusbook-black.png" alt="FocusBook Black Image">
+        </div>
+    </black-section>
+    <gradient-section class="flex-row">
+        <img src="assets/focusmode.png" alt="FocusMode Image" class="focusmode-img">
+        <div class="focusmode-text">
+            <h3>FocusMode</h3>
+            <h2>Rimani nel flow.</h2>
+            <p>Nascondi notifich, social e distrazioni. <br> Concentrati solo sullo studio.</p>
+            <ul class="focusmode-list">
+                <li>Modalità studio</li>
+                <li>Split screen</li>
+                <li>Timer Pomodoro</li>
+                <li>Statistiche</li>
+            </ul>
+        </div>
+    </gradient-section>
+    <white-section class="flex-row paperlike-section">
+        <div class="PaperLike-container">
+            <div class="focusmode-text">
+                <h3>Display PaperLike</h3>
+                <h2>Scrivi come su carta.</h2>
+                <p>Scrittura naturale, precisa e fluida. <br> Progettata per accompagnare <br> ogni tua idea.</p>
+            </div>
+            <img src="assets/Pencil side 1.png" alt="Pencil Image" class="PaperLike-img">
+        </div>
+    </white-section>
+     <reverse-gradient-section class="flex-row">
+        <img src="assets/FocusBook Stand 1.png" alt="FocusMode Image" class="focusmode-img" style="padding-bottom: 1.5rem;">
+        <div class="focusmode-text">
+            <h3>Stellar Keyboard</h3>
+            <h2>Da tablet a workstation.</h2>
+            <p>Sottile, leggera e silenziosa per scrivere <br> ovunque.</p>
+        </div>
+    </reverse-gradient-section>
+    <black-section class="flex-row" style="padding-bottom: 2rem;">
+        <div class="black-info-text">
+           <p>Fino a</p>
+           <h3>18 ore</h3>
+           <p>di batteria</p>
+        </div>
+        <div class="black-info-text">
+           <p>Chip</p>
+           <h3>Starcore</h3>
+           <p>Potenza senza rumore</p>
+        </div>
+        <div class="black-info-text">
+           <p>Display</p>
+           <h3>120Hz</h3>
+           <p>Ultra smooth</p>
+        </div>
+    </black-section>
+    <CordoniniOS-section>
+        <div class="CordoniniOS-container" style="padding-bottom: 1.5rem;">
+            <div class="CordoniniOS-container-text">
+                <h2>CordoniniOS</h2>
+                <h1>Semplice. <br> Intuitivo. <br>Potente.</h1>
+                <p>Un sistema operativo basato su Android <br> perfetto per lo studio e la concentrazione. <br> Con software progettati per l'education.</p>
+                <a href="#store" class="btn-fill">Scopri CordoniniOS →</a>
+            </div>
+            <img src="assets/Interfaccia 3D 1.png" alt="CordoniniOS Image">
+        </div>
+        <div class="CordoniniOS-container" style="gap: 10rem; padding-top: 1.5rem; padding-bottom: 4rem;">
+            <div class="CordoniniOS-container-text small" style="gap: 0.2rem; ">
+                <h3>Libri organizzati</h3>
+                <p>Tutto il tuo materiale <br> in un unico posto</p>
+            </div>
+            <div class="CordoniniOS-container-text small" style="gap: 0.2rem; ">
+                <h3>Appunti intelligenti</h3>
+                <p>Organizza i tuoi appunti con <br> registrazioni smart</p>
+            </div>
+            <div class="CordoniniOS-container-text small" style="gap: 0.2rem; ">
+                <h3>Planner integrato</h3>
+                <p>Pianifica il tuo studio e <br> rispetta le tue scadenze</p>
+            </div>
+        </div>
+    </CordoniniOS-section>
+    <white-section>
+    </white-section>
+	<footer> 
+		<a href="#home" class="logo">
+			<img src="assets/Logo.svg" alt="FocusBook Logo" class="logo"/>
+		</a>
+		<div class="footer-container">
+			<div class="footer-links">
+				<a href="#cookies">Cookies and Privacy</a>
+				<p>Via Cordona, 67, 18100 Imperia IM</p>
+				<p>©2026 Hélene. Tutti i diritti riservati.</p>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
