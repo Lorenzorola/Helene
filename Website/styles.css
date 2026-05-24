@@ -47,10 +47,17 @@ body {
   background-color: var(--color-bg);
   font-family: var(--font-main);
   font-weight: 400;
+  line-height: 1.2;
+  overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 button {
@@ -242,13 +249,20 @@ nav a.active:hover {
 
 /* Page sections */
 main {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: calc(100vh - 200px);
+  min-height: 100svh;
   padding-top: 3rem;
-  padding-bottom: 0;
+  padding-bottom: clamp(2rem, 6vw, 4rem);
+  overflow: hidden;
   background: var(--gradient-page);
+}
+
+main > :not(.hero-image) {
+  position: relative;
+  z-index: 1;
 }
 
 black-section {
@@ -657,9 +671,15 @@ accessori-grid h2 {
 
 /* Images */
 .hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   width: 100%;
-  height: auto;
-  object-fit: fill;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center bottom;
+  pointer-events: none;
 }
 
 .covers-image {
@@ -706,6 +726,7 @@ red-section > .screen-image {
 
 /* Footer */
 footer {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1179,7 +1200,7 @@ CordoniniOS-section {
 }
 
 .comparison-text p {
-  color: var(--color-text)
+  color: var(--color-text);
   line-height: 1.45;
 }
 
@@ -1387,9 +1408,13 @@ CordoniniOS-section {
   height: 5rem ;
 }
 
+promo{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .promo-img{
   height: 15rem;
-  width: 100%;
 }
 
 .info-title{
@@ -1444,6 +1469,638 @@ CordoniniOS-section {
   .adriana-pen-hero .focusbook-type-hero h2,
   .adriana-pen-hero .focusbook-type-hero p {
     text-align: center;
+  }
+}
+
+/* Responsive layout */
+main,
+black-section,
+gradient-section,
+reverse-gradient-section,
+white-section,
+red-section,
+accessori-grid,
+focusbook-hero,
+CordoniniOS-section,
+promo {
+  width: 100%;
+}
+
+main,
+black-section,
+gradient-section,
+reverse-gradient-section,
+white-section,
+red-section,
+accessori-grid {
+  padding-right: clamp(1rem, 5vw, 3rem);
+  padding-left: clamp(1rem, 5vw, 3rem);
+}
+
+.focusbook-nova-section {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 90px);
+}
+
+.hero-title,
+.hero-subtitle,
+.black-title,
+.white-title,
+.black-subtitle,
+.white-subtitle,
+red-section h2,
+red-section p,
+accessori-grid h2,
+.accessori-page-section h2,
+.accessori-page-section h3,
+.accessori-page-section p {
+  width: min(100%, 72rem);
+  max-width: 100%;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.black-title,
+.white-title,
+.focusbook-type-hero h1,
+.CordoniniOS-container-text h1 {
+  font-size: clamp(2.2rem, 5vw, 50px);
+}
+
+.focusbook-hero-text h1 {
+  font-size: clamp(2.6rem, 6vw, 60px);
+}
+
+.highlight-accent {
+  font-size: clamp(2.7rem, 6vw, 60px);
+}
+
+.accessori-page-section h2 {
+  font-size: clamp(2.2rem, 5vw, 50px);
+}
+
+red-section h2,
+accessori-grid h2,
+.focusmode-text h2,
+.focusbook-nova-text h2 {
+  font-size: clamp(2rem, 4.5vw, 40px);
+}
+
+.covers-image,
+.screen-image,
+.accessori-page-section img,
+.focusbook-img-hero,
+.focusmode-img,
+.CordoniniOS-container img {
+  max-width: 100%;
+}
+
+.covers-image {
+  height: clamp(16rem, 38vw, 30rem);
+}
+
+.screen-image {
+  height: clamp(16rem, 38vw, 30rem);
+  object-fit: contain;
+}
+
+.Accessori-container {
+  flex-wrap: wrap;
+  width: min(100%, 72rem);
+}
+
+.Accessori-box {
+  width: min(24rem, 100%);
+}
+
+.hero-buttons,
+.color-selector {
+  flex-wrap: wrap;
+}
+
+.btn-fill,
+.btn-empty,
+.btn-fill-reverse,
+.btn-empty-reverse {
+  max-width: 100%;
+  text-align: center;
+}
+
+.accessori-grid-container {
+  width: min(100%, 72rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 18rem));
+  grid-template-rows: none;
+}
+
+.accessori-grid-element {
+  width: min(18rem, 100%);
+}
+
+.accessori-page-section {
+  gap: clamp(2rem, 7vw, 8rem);
+  padding-right: clamp(1rem, 5vw, 3rem);
+  padding-left: clamp(1rem, 5vw, 3rem);
+}
+
+.accessori-page-container {
+  width: min(100%, 36rem);
+}
+
+.accessori-page-section img,
+.focusbook-img-hero {
+  height: clamp(18rem, 40vw, 30rem);
+  object-fit: contain;
+}
+
+.focusbook-img-hero {
+  width: auto;
+}
+
+.focusmode-img {
+  width: min(30rem, 100%);
+}
+
+.focusmode-text,
+.focusbook-type-hero,
+.accessori-fb-text,
+.accessori-fb-text-reverse,
+.CordoniniOS-container-text,
+.info-container,
+.comparison-text {
+  max-width: 42rem;
+}
+
+.info-container,
+.info-paragraf,
+.footer-links,
+.comparison-text {
+  overflow-wrap: anywhere;
+}
+
+.PaperLike-container {
+  gap: clamp(2rem, 8vw, 8rem);
+}
+
+.PaperLike-img {
+  max-width: 55%;
+}
+
+.CordoniniOS-container {
+  width: min(100%, 72rem);
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.comparison-container {
+  width: min(100%, 72rem);
+}
+
+.accessori-fb-container,
+.hint-container {
+  justify-content: center;
+  max-width: 100%;
+}
+
+.accessori-fb-container img {
+  height: clamp(13rem, 28vw, 20rem);
+  object-fit: contain;
+}
+
+.promo-img {
+  width: 100%;
+  max-width: 100%;
+  height: clamp(10rem, 24vw, 15rem);
+  object-fit: contain;
+}
+
+promo {
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+@media (max-width: 1180px) {
+  header {
+    padding: 2rem clamp(1rem, 4vw, 3rem);
+  }
+
+  nav {
+    gap: clamp(1.25rem, 3vw, 3rem);
+  }
+
+  .Accessori-container {
+    gap: clamp(2rem, 8vw, 8rem);
+  }
+
+  .flex-row {
+    gap: clamp(2rem, 8vw, 6rem);
+  }
+
+  .comparison-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hint-container {
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+}
+
+@media (max-width: 980px) {
+  header {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  header > .logo,
+  header > .cart-icon {
+    position: static;
+  }
+
+  header > .nav-container {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 1rem;
+  }
+
+  focusbook-hero {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+    min-height: auto;
+    padding: 3rem clamp(1rem, 5vw, 3rem);
+  }
+
+  focusbook-hero img,
+  .focusbook-hero-text,
+  .focusbook-hero-btn {
+    grid-column: 1;
+    justify-self: center;
+  }
+
+  focusbook-hero img {
+    width: min(70vw, 28rem);
+  }
+
+  .focusbook-hero-text,
+  .focusbook-hero-text h1,
+  .focusbook-hero-text h2,
+  .focusbook-hero-text p {
+    text-align: center;
+  }
+
+  .focusbook-hero-btn {
+    align-items: center;
+  }
+
+  .focusbook-nova {
+    grid-template-columns: 1fr;
+  }
+
+  .focusbook-nova-text {
+    align-items: center;
+    padding: 3rem clamp(1rem, 6vw, 3rem);
+    text-align: center;
+  }
+
+  .focusbook-nova-text h2,
+  .focusbook-nova-text h3,
+  .focusbook-nova-text p {
+    text-align: center;
+  }
+
+  .focusbook-nova img {
+    width: min(100%, 34rem);
+    justify-self: center;
+  }
+
+  .flex-row {
+    flex-direction: column;
+    gap: 2.5rem !important;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .focusmode-text,
+  .focusmode-text h2,
+  .focusmode-text h3,
+  .focusmode-text p,
+  .focusbook-type-hero,
+  .focusbook-type-hero h1,
+  .focusbook-type-hero h2,
+  .focusbook-type-hero p,
+  .CordoniniOS-container-text,
+  .CordoniniOS-container-text h1,
+  .CordoniniOS-container-text h2,
+  .CordoniniOS-container-text p {
+    align-items: center;
+    text-align: center;
+  }
+
+  .focusmode-list {
+    text-align: left;
+  }
+
+  .PaperLike-container {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0;
+  }
+
+  .PaperLike-container .focusmode-text {
+    padding-left: 0;
+  }
+
+  .PaperLike-img {
+    width: min(100%, 28rem);
+    max-width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+
+  .CordoniniOS-container {
+    flex-direction: column;
+    gap: 2.5rem !important;
+  }
+
+  .accessori-page-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .accessori-page-section h2,
+  .accessori-page-section h3,
+  .accessori-page-section p {
+    text-align: center;
+  }
+
+  .accessori-fb-container {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .accessori-fb-text,
+  .accessori-fb-text-reverse,
+  .accessori-fb-text h2,
+  .accessori-fb-text-reverse h2 {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hint-container {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .comparison-box {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 720px) {
+  header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding: 1.25rem;
+  }
+
+  header > .logo {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  header > .cart-icon {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  header > .nav-container {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    order: initial;
+  }
+
+  .logo {
+    width: 78px;
+    height: 50px;
+  }
+
+  .cart-icon img {
+    width: 34px;
+    height: 34px;
+  }
+
+  nav {
+    gap: 0.8rem 1.1rem;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  .dropdown-menu {
+    min-width: 135px;
+    padding: 0.8rem;
+  }
+
+  main {
+    min-height: 100svh;
+    padding-top: 2.5rem;
+  }
+
+  .hero-subtitle,
+  .black-subtitle,
+  .white-subtitle {
+    margin-bottom: 2rem;
+  }
+
+  .hero-buttons {
+    width: 100%;
+  }
+
+  .btn-fill,
+  .btn-empty,
+  .btn-fill-reverse,
+  .btn-empty-reverse {
+    min-width: min(100%, 215px);
+    padding-right: 1.4rem;
+    padding-left: 1.4rem;
+  }
+
+  .Accessori-box {
+    min-height: 24rem;
+    height: auto;
+  }
+
+  red-section {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  red-section > .screen-image {
+    position: relative;
+    width: min(100%, 22rem);
+    height: auto;
+    padding-bottom: 0;
+    object-fit: contain;
+  }
+
+  .reviews-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .reviews-box {
+    align-items: center;
+  }
+
+  .os-image {
+    height: 7rem;
+  }
+
+  .stelle-image {
+    height: 3.5rem;
+  }
+
+  .accessori-grid-container {
+    gap: 1.5rem;
+  }
+
+  .hint-container {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .hint-container > img {
+    display: none;
+  }
+
+  .hint-box {
+    width: min(100%, 22rem);
+  }
+
+  .hint-box img {
+    height: 4rem;
+  }
+
+  .color-selector {
+    justify-content: center;
+  }
+
+  .comparison-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .comparison-box img {
+    height: 9rem;
+  }
+
+  .comparison-text,
+  .comparison-text h3,
+  .comparison-text p {
+    align-items: center;
+    text-align: center;
+  }
+
+  .comparison-text .btn-empty,
+  .comparison-text .btn-fill {
+    align-self: center;
+  }
+
+  .info-box {
+    width: 100%;
+    padding: 1.25rem;
+  }
+
+  .info-box-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-box-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  black-section[style*="padding: 7rem"] {
+    padding: 3rem clamp(1rem, 5vw, 3rem) !important;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 3rem 1.25rem;
+    text-align: center;
+  }
+
+  footer > .logo,
+  footer > .footer-container {
+    position: static;
+  }
+
+  .footer-container {
+    justify-content: center;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    gap: 0.7rem 0.9rem;
+  }
+
+  nav a {
+    font-size: 13px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 15vw, 3.4rem);
+  }
+
+  .black-title,
+  .white-title,
+  .focusbook-type-hero h1,
+  .CordoniniOS-container-text h1 {
+    font-size: 2rem;
+  }
+
+  .highlight-accent {
+    font-size: 2.4rem;
+  }
+
+  .focusbook-img-hero,
+  .accessori-page-section img {
+    height: auto;
+    max-height: 22rem;
+  }
+
+  .color-option {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .color-selector img {
+    height: 2.45rem;
+  }
+
+  .promo-img {
+    height: auto;
+    min-height: 8rem;
   }
 }
 
