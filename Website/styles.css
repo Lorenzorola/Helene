@@ -1,7 +1,5 @@
 /* Fonts */
 
-/* Puttana tua madre */
-
 @font-face {
   font-family: "SF Pro";
   src: url("assets/font/SF-Pro.ttf") format("truetype");
@@ -859,8 +857,7 @@ focusbook-hero img {
   margin-bottom: 0;
   color: var(--color-highlight);
   font-size: 30px;
-  font-weight: 510;
-  
+  font-weight: 590;
   text-align: left;
 }
 
@@ -919,7 +916,7 @@ focusbook-hero img {
   margin-bottom: 0;
   color: var(--color-highlight);
   font-size: 30px;
-  font-weight: 510;
+  font-weight: 590;
   
   text-align: left;
 }
@@ -1014,7 +1011,7 @@ CordoniniOS-section {
   margin-bottom: 0;
   color: var(--color-highlight);
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 590;
   text-align: left;
 }
 
@@ -1047,5 +1044,203 @@ CordoniniOS-section {
   width: 30rem;
   height: auto;
   object-fit: contain;
+}
+
+.versions-section {
+  width: 100%;
+  margin-bottom: 0;
+  padding: 3rem clamp(1rem, 5vw, 4rem) 3.5rem;
+}
+
+.versions-section .white-subtitle {
+  margin-bottom: 2rem;
+}
+
+.comparison-table-wrap {
+  width: min(100%, 980px);
+  overflow-x: auto;
+  background: var(--color-bg);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.comparison-table {
+  width: 100%;
+  min-width: 700px;
+  color: var(--color-header);
+  font-size: 16px;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1.1rem 1.25rem;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.comparison-table th:not(:last-child),
+.comparison-table td:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.comparison-table thead th {
+  color: var(--color-text);
+  font-weight: 590;
+  white-space: nowrap;
+  background: var(--color-header);
+}
+
+.comparison-table thead th:not(:last-child) {
+  border-right-color: rgba(255, 255, 255, 0.18);
+}
+
+.comparison-table thead th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.comparison-table thead th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.comparison-table tbody th {
+  width: 28%;
+  color: var(--color-header);
+  font-weight: 510;
+}
+
+.comparison-table tbody td {
+  color: #242424;
+  font-weight: 400;
+}
+
+.comparison-table tbody tr:last-child th,
+.comparison-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.comparison-table tbody tr:hover th,
+.comparison-table tbody tr:hover td {
+  background: rgba(241, 25, 72, 0.08);
+}
+
+.comparison-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 0;
+}
+
+.comparison-box {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--color-header);
+  border-radius: 12px;
+}
+
+.comparison-box img{
+  height: 12rem;
+}
+
+.comparison-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.85rem;
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.comparison-text h3 {
+  color: var(--color-text);
+  font-size: 22px;
+  font-weight: 510;
+}
+
+.comparison-text p {
+  color: var(--color-text)
+  line-height: 1.45;
+}
+
+.comparison-text li{
+  list-style: none;
+}
+
+.comparison-text span{
+  color: var(--color-highlight);
+}
+
+.comparison-text .btn-empty,
+.comparison-text .btn-fill {
+  align-self: flex-start;
+  min-width: 165px;
+  margin-top: 0.5rem;
+}
+
+.accessori-fb-text{
+  color: var(--color-header);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-items: left;
+  text-align: left;
+  gap: 2rem;
+}
+
+.accessori-fb-text h2{
+   margin-bottom: 0;
+  font-size: 30px;
+  font-weight: 590;
+  text-align: left;
+  color: var(--color-header);
+}
+
+.accessori-fb-text span{
+  color: var(--color-highlight);
+}
+
+
+
+.accessori-fb-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8rem;
+}
+
+.accessori-fb-container img{
+  height: 20rem;
+}
+
+@media (max-width: 760px) {
+  .versions-section {
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  .comparison-table {
+    min-width: 620px;
+    font-size: 14px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.9rem 1rem;
+  }
+
+  .comparison-container {
+    grid-template-columns: 1fr;
+  }
 }
 
