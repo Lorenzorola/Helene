@@ -45,14 +45,45 @@
 	</header>
     <gradient-section class="flex-row" style="padding-bottom: 2rem; gap:10rem; padding-top: 3rem;">
         <div class="focusbook-type-hero">
-            <h2>Aquista FocusBook</h2>
-            <h1>FocusBook <br> Personal</h1>
+            <h2>Aquista accessori</h2>
+            <h1>Smart Cover</h1>
             <p>---</p>
             <h1 style="font-size: 40px;">prezzo</h1>
             <a href=""class="btn-fill" style="min-width: 215px;">Aquista ora</a>
             <a href=""class="btn-empty" style="min-width: 215px;">Aggiungi al carrello</a>
+            <div class="color-selector">
+                <button type="button" class="color-option active" data-image="assets/Covers/Red.png" data-alt="Smart Cover rossa" aria-label="Seleziona rosso" aria-pressed="true">
+                    <img src="assets/Cover-Color-selector/red.png" alt="Rosso">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Covers/Orange.png" data-alt="Smart Cover arancione" aria-label="Seleziona arancione" aria-pressed="false">
+                    <img src="assets/Cover-Color-selector/orange.png" alt="Arancione">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Covers/Yellow.png" data-alt="Smart Cover gialla" aria-label="Seleziona giallo" aria-pressed="false">
+                    <img src="assets/Cover-Color-selector/yellow.png" alt="Giallo">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Covers/Green.png" data-alt="Smart Cover verde" aria-label="Seleziona verde" aria-pressed="false">
+                    <img src="assets/Cover-Color-selector/Green.png" alt="Verde">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Covers/Blue.png" data-alt="Smart Cover blu" aria-label="Seleziona blu" aria-pressed="false">
+                    <img src="assets/Cover-Color-selector/purple.png" alt="Blu">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Covers/Lavander.png" data-alt="Smart Cover lilla" aria-label="Seleziona lilla" aria-pressed="false">
+                    <img src="assets/Cover-Color-selector/lilac.png" alt="Lilla">
+                </button><button type="button" class="color-option" data-image="assets/Covers/Transparent.png" data-alt="Smart Cover trasparente" aria-label="Seleziona trasparente" aria-pressed="false">
+                    <img src="assets/Cover-Color-selector/trasparent.png" alt="Trasparente">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Covers/White.png" data-alt="Smart Cover bianca" aria-label="Seleziona bianco" aria-pressed="false">
+                    <img src="assets/Cover-Color-selector/white.png" alt="Bianco">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Covers/Gray.png" data-alt="Smart Cover grigia" aria-label="Seleziona grigio" aria-pressed="false">
+                    <img src="assets/Cover-Color-selector/gray.png" alt="Grigio">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Covers/Black.png" data-alt="Smart Cover nera" aria-label="Seleziona nero" aria-pressed="false">
+                    <img src="assets/Cover-Color-selector/black.png" alt="Nero">
+                </button>
+            </div>
         </div>
-        <img src="assets/Blue.png" alt="FocusBook Personal Midnight blue" class="focusbook-img-hero" id="focusbookColorPreview">
+        <img src="assets/Covers/Red.png" alt="Cover red" class="focusbook-img-hero" id="CoverColorPreview">
     </gradient-section>
     <white-section>
         <div class="hint-container">
@@ -93,19 +124,21 @@
             </div>
         </div>
     </white-section>
-    <black-section style="margin-bottom: 1rem;">
-        <h2 class="white-title" style="color: var(--color-highlight);">Accessori</h2>
-        <h3 class="black-subtitle">Perfetti per ogni esigenza e compatibili con ogni versione</h3>
-        <div class="accessori-fb-container">
-            <div class="accessori-fb-text-reverse">
-                <h2><span>→</span> Adriana Pen 2.0 <br> <span>→</span> Stellar Keyboard <br> <span>→</span> Smart Cover</h2>
-                <a href="accessori.html" class="btn-fill btn-large">Scopri gli accessori</a>
-            </div>
-            <img src="assets/Accessori2 1.png" alt="fb-acc">
-        </div>
-    </black-section>
+   <red-section>
+		<img src="assets/Screen 1.png" alt="Screen 1" class="screen-image">
+		<div class="reviews-container">
+			<div class="reviews-box">
+				<h2>Scopri anche FocusBook</h2>
+				<p>Il tablet per lo studio e concentrazione</p>
+				<div class="hero-buttons">
+					<a href="focusbook.html" class="btn-fill-reverse">Scopri di più</a>
+					<a href="#store" class="btn-empty-reverse">Acquista</a>
+			</div>
+		</div>
+		</div>
+	</red-section>
     <footer> 
-		<a href="#home" class="logo">
+		<a href="index.html" class="logo">
 			<img src="assets/Logo.svg" alt="FocusBook Logo" class="logo"/>
 		</a>
 		<div class="footer-container">
@@ -116,5 +149,24 @@
 			</div>
 		</div>
 	</footer>
+    <script>
+        const coverColorOptions = document.querySelectorAll(".color-option");
+        const coverPreview = document.querySelector("#CoverColorPreview");
+
+        coverColorOptions.forEach((option) => {
+            option.addEventListener("click", () => {
+                coverPreview.src = option.dataset.image;
+                coverPreview.alt = option.dataset.alt;
+
+                coverColorOptions.forEach((item) => {
+                    item.classList.remove("active");
+                    item.setAttribute("aria-pressed", "false");
+                });
+
+                option.classList.add("active");
+                option.setAttribute("aria-pressed", "true");
+            });
+        });
+    </script>
 </body>
 </html>
