@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FocusBook</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header>
+		<a href="#home" class="logo">
+			<img
+				src="assets/Logo.svg"
+				alt="FocusBook Logo"
+				class="logo"
+			/>
+		</a>
+	<div class="nav-container">
+			<button class="menu-toggle" id="menuToggle">☰</button>
+			<nav id="menu">
+				<a href="index.html">Home</a>
+                <div class="nav-dropdown">
+					<a href="focusbook.html" class="active">FocusBook</a>
+					<div class="dropdown-menu">
+						<a href="focusbook-personal.html">Personal</a>
+						<a href="focusbook-school.html">School</a>
+					</div>
+				</div>
+				<div class="nav-dropdown">
+					<a href="accessori.html">Accessori</a>
+					<div class="dropdown-menu">
+						<a href="#reviews">Adriana Pen 2.0</a>
+						<a href="#support">StellarKeyboard</a>
+                        <a href="#support">Cover</a>
+					</div>
+				</div>
+				<a href="#support">Supporto</a>
+				<a href="#contacts">Contatti</a>
+			</nav>
+		</div>
+		<div class="cart-icon">
+			<img src="assets/cart.png" alt="base cart" class="base">
+			<img src="assets/cart-hover.png" alt="hover cart" class="hover">
+		</div>
+	</header>
+    <gradient-section class="flex-row" style="padding-bottom: 2rem; gap:10rem; padding-top: 3rem;">
+        <div class="focusbook-type-hero">
+            <h2>Aquista FocusBook</h2>
+            <h1>FocusBook <br> Personal</h1>
+            <p>---</p>
+            <h1 style="font-size: 40px;">prezzo</h1>
+            <a href=""class="btn-fill" style="min-width: 215px;">Aquista ora</a>
+            <a href=""class="btn-empty" style="min-width: 215px;">Aggiungi al carrello</a>
+            <div class="color-selector">
+                <button type="button" class="color-option active" data-image="assets/Gray.png" data-alt="FocusBook Personal Silver Mist" aria-label="Seleziona Silver Mist" aria-pressed="true">
+                    <img src="assets/silvermist.png" alt="Silver Mist">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Blue.png" data-alt="FocusBook Personal Midnight Blue" aria-label="Seleziona Midnight Blue" aria-pressed="false">
+                    <img src="assets/midnightblue.png" alt="Midnight Blue">
+                </button>
+                <button type="button" class="color-option" data-image="assets/Light Pink.png" data-alt="FocusBook Personal Rose" aria-label="Seleziona Rose" aria-pressed="false">
+                    <img src="assets/rose.png" alt="Rose">
+                </button>
+            </div>
+        </div>
+        <img src="assets/Gray.png" alt="FocusBook Personal Silver Mist" class="focusbook-img-hero" id="focusbookColorPreview">
+    </gradient-section>
+    <white-section>
+        <div class="hint-container">
+            <div class="hint-box">
+                <img src="assets/freeaccess.png" alt="freeaccess">
+                <h2>Titolo</h2>
+                <p>---------------------</p>
+            </div>
+            <img src="assets/hint-box-line.png" alt="line">
+            <div class="hint-box">
+                <img src="assets/freeaccess.png" alt="freeaccess">
+                <h2>Titolo</h2>
+                <p>---------------------</p>
+            </div>
+            <img src="assets/hint-box-line.png" alt="line">
+            <div class="hint-box">
+                <img src="assets/freeaccess.png" alt="freeaccess">
+                <h2>Titolo</h2>
+                <p>---------------------</p>
+            </div>
+        </div>
+    </white-section>
+    <img src="assets/Promozione Personal 1.png" alt="promopersonal" class="promo-img">
+    <white-section style="gap: 3rem; padding: 3rem;">
+        <h2 class="info-title"> Informazioni FocusBook Personal</h2>
+        <div class="info-container">
+            <div>
+                <h2 class="info-subtitle">Panoramica</h2>
+                <p class="info-paragraf"><span>djfgsjhdfg</span>fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
+            </div>
+            <div>
+                <h2 class="info-subtitle">Panoramica</h2>
+                <p class="info-paragraf"><span>djfgsjhdfg</span>fffffffffffff</p>
+            </div>
+            <div>
+                <h2 class="info-subtitle">Panoramica</h2>
+                <p class="info-paragraf"><span>djfgsjhdfg</span>fffffffffffff</p>
+            </div>
+        </div>
+    </white-section>
+    <black-section style="margin-bottom: 1rem;">
+        <h2 class="white-title" style="color: var(--color-highlight);">Accessori</h2>
+        <h3 class="black-subtitle">Perfetti per ogni esigenza e compatibili con ogni versione</h3>
+        <div class="accessori-fb-container">
+            <div class="accessori-fb-text-reverse">
+                <h2><span>→</span> Adriana Pen 2.0 <br> <span>→</span> Stellar Keyboard <br> <span>→</span> Smart Cover</h2>
+                <a href="accessori.html" class="btn-fill btn-large">Scopri gli accessori</a>
+            </div>
+            <img src="assets/Accessori2 1.png" alt="fb-acc">
+        </div>
+    </black-section>
+    <footer> 
+		<a href="#home" class="logo">
+			<img src="assets/Logo.svg" alt="FocusBook Logo" class="logo"/>
+		</a>
+		<div class="footer-container">
+			<div class="footer-links">
+				<a href="#cookies">Cookies and Privacy</a>
+				<p>Via Cordona, 67, 18100 Imperia IM</p>
+				<p>©2026 Hélene. Tutti i diritti riservati.</p>
+			</div>
+		</div>
+	</footer>
+    <script>
+        const colorOptions = document.querySelectorAll(".color-option");
+        const focusbookPreview = document.querySelector("#focusbookColorPreview");
+
+        colorOptions.forEach((option) => {
+            option.addEventListener("click", () => {
+                focusbookPreview.src = option.dataset.image;
+                focusbookPreview.alt = option.dataset.alt;
+
+                colorOptions.forEach((item) => {
+                    item.classList.remove("active");
+                    item.setAttribute("aria-pressed", "false");
+                });
+
+                option.classList.add("active");
+                option.setAttribute("aria-pressed", "true");
+            });
+        });
+    </script>
+</body>
+</html>

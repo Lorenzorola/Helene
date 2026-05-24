@@ -19,12 +19,19 @@
 			<button class="menu-toggle" id="menuToggle">☰</button>
 			<nav id="menu">
 				<a href="index.html">Home</a>
-				<a href="focusbook.html" class="active">FocusBook</a>
+				<div class="nav-dropdown">
+					<a href="focusbook.html" class="active">FocusBook</a>
+					<div class="dropdown-menu">
+						<a href="focusbook-personal.html">Personal</a>
+						<a href="focusbook-school.html">School</a>
+					</div>
+				</div>
 				<div class="nav-dropdown">
 					<a href="accessori.html">Accessori</a>
 					<div class="dropdown-menu">
 						<a href="#reviews">Adriana Pen 2.0</a>
 						<a href="#support">StellarKeyboard</a>
+                        <a href="#support">Cover</a>
 					</div>
 				</div>
 				<a href="#support">Supporto</a>
@@ -46,8 +53,8 @@
         <img src="assets/focusbook-hero1.png" alt="FocusBook Hero Image">
 
         <div class="focusbook-hero-btn">
-            <a href="#store" class="btn-empty btn-large" style="min-width: 240px;">Acquista School</a>
-            <a href="#products" class="btn-fill btn-large" style="min-width: 240px;">Acquista Personal</a>
+            <a href="focusbook-school.html" class="btn-empty btn-large" style="min-width: 240px;">Acquista School</a>
+            <a href="focusbook-personal.html" class="btn-fill btn-large" style="min-width: 240px;">Acquista Personal</a>
         </div>
     </focusbook-hero>
     <black-section class="focusbook-nova-section">
@@ -194,7 +201,7 @@
                             <span>→</span> Modalità verifica
                         </li>
                     </ul>
-                    <a href="#store" class="btn-empty">Acquista School</a>
+                    <a href="focusbook-school.html" class="btn-empty">Acquista School</a>
                 </div>
                 <img src="assets/graduation-hat 1.png" alt="hat">
             </div>
@@ -216,7 +223,7 @@
                             <span>→</span> FocusMode personalizzata
                         </li>
                     </ul>
-                    <a href="#store" class="btn-fill">Acquista Personal</a>
+                    <a href="focusbook-personal.html" class="btn-fill">Acquista Personal</a>
                 </div>
                 <img src="assets/user 1.png" alt="user1">
             </div>
